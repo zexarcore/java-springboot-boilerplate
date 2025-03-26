@@ -1,18 +1,18 @@
-package com.app.users.domain;
+package com.app.itineraries.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")
+@Table(name = "itineraries")
 @Data
-public class User {
+public class Itineraries {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = true)
+    private int usersId;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -24,11 +24,11 @@ public class User {
     private String phone;
 
     // Empty constructor (required for JPA)
-    public User() {
+    public Itineraries() {
     }
 
     // Constructor with parameters
-    public User(Long id, String name, String email, String password, String phone) {
+    public Itineraries(Long id, String name, String email, String password, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
