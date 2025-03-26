@@ -13,4 +13,4 @@ until mysql -h"${host%:*}" -P"${host##*:}" -uroot -proot -e 'SELECT 1'; do
 done
 
 >&2 echo "MySQL is up - executing command"
-exec $cmd 
+exec $cmd
