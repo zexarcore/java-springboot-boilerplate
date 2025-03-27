@@ -1,4 +1,4 @@
-package com.app.users.domain;
+package com.app.transports.domain;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Transports, Long> {
+public interface TransportsRepository extends JpaRepository<Transports, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
@@ -23,7 +23,7 @@ public interface IUserRepository extends JpaRepository<Transports, Long> {
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends Transports> S save(@NonNull S user);
+    <S extends Transports> S save(@NonNull S transpor);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override
