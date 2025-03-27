@@ -12,28 +12,24 @@ public class Itineraries {
     private Long id;
 
     @Column(nullable = true)
-    private int usersId;
-
-    @Column(nullable = false, unique = true)
-    private String email;
+    private int users_Id;
 
     @Column(nullable = false)
-    private String password;
+    private String name;
 
-    @Column(nullable = true)
-    private String phone;
+    @Column(nullable = false)
+    private String creation_date;
 
     // Empty constructor (required for JPA)
     public Itineraries() {
     }
 
     // Constructor with parameters
-    public Itineraries(Long id, String name, String email, String password, String phone) {
+    public Itineraries(Long id, int users_Id, String name, String creation_date) {
         this.id = id;
+        this.users_Id = users_Id;
         this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
+        this.creation_date = creation_date;
     }
 
     // Getters y Setters
@@ -45,6 +41,14 @@ public class Itineraries {
         this.id = id;
     }
 
+    public int getUsers_Id() {
+        return users_Id;
+    }
+
+    public void setUsers_Id(int users_Id) {
+        this.users_Id = users_Id;
+    }
+
     public String getName() {
         return name;
     }
@@ -53,27 +57,11 @@ public class Itineraries {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCreation_date() {
+        return this.creation_date;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCreation_date(String creation_date) {
+        this.creation_date = creation_date;
     }
 }
