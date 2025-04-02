@@ -8,22 +8,22 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Service, Long> {
+public interface IUserRepository extends JpaRepository<Typevehicle, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull
-    List<Service> findAll();
+    List<Typevehicle> findAll();
 
     // Search user by ID (already provided by JpaRepository)
     @Override
     @NonNull
-    Optional<Service> findById(@NonNull Long id);
+    Optional<Typevehicle> findById(@NonNull Long id);
 
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends Service> S save(@NonNull S user);
+    <S extends Typevehicle> S save(@NonNull S user);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override
@@ -36,7 +36,7 @@ public interface IUserRepository extends JpaRepository<Service, Long> {
     // Additional application-specific methods:
 
     // Search for a user by their email
-    Optional<Service> findByEmail(String email);
+    Optional<Typevehicle> findByEmail(String email);
 
     // Check if an email is already registered
     boolean existsByEmail(String email);
