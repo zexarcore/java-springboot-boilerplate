@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "vehicles")
 @Data
-public class Vehicles {
+public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,10 +24,10 @@ public class Vehicles {
     private String color;
 
     // Empty constructor (required for JPA)
-    public Vehicles() {}
+    public Vehicle() {}
 
     // Constructor with parameters
-    public Vehicles(Long id, String plate, int type_vehicle_id, int brand_id, String color) {
+    public Vehicle(Long id, String plate, int type_vehicle_id, int brand_id, String color) {
         this.id = id;
         this.plate = plate;
         this.type_vehicle_id = type_vehicle_id; 
