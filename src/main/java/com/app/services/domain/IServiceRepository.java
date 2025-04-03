@@ -1,4 +1,4 @@
-package com.app.users.domain;
+package com.app.services.domain;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Service, Long> {
+public interface IServiceRepository extends JpaRepository<Service, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override

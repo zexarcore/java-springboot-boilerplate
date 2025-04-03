@@ -9,7 +9,7 @@ import lombok.Data;
 public class TypeVehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -19,17 +19,17 @@ public class TypeVehicle {
     }
 
     // Constructor with parameters
-    public TypeVehicle(Integer id, String name) {
+    public TypeVehicle(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
     // Getters y Setters
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

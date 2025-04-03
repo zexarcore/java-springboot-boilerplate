@@ -9,7 +9,7 @@ import lombok.Data;
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -25,7 +25,7 @@ public class Service {
     }
 
     // Constructor with parameters
-    public Service(Integer id, String name, Double price, String description) {
+    public Service(Long id, String name, Double price, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -33,11 +33,11 @@ public class Service {
     }
 
     // Getters y Setters
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,4 +1,4 @@
-package com.app.users.application;
+package com.app.typevehicles.application;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import com.app.users.domain.IUserService;
 import com.app.users.domain.User;
 
 @Service
-public class UserService implements IUserService {
+public class TypeVehicleService implements IUserService {
 
     private final IUserRepository userRepository;
 
-    public UserService(IUserRepository userRepository) {
+    public TypeVehicleService(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
