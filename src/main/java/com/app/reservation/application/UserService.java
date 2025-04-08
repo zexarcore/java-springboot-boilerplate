@@ -1,4 +1,4 @@
-package com.app.accommodations.application;
+package com.app.reservation.application;
 
 import java.util.List;
 
@@ -20,20 +20,17 @@ public class UserService implements IUserService {
         this.userRepository = userRepository;
     }
 
-    //buscar todos
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
-    //buscar por id
     @Override
     public User findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
     }
 
-    //guardar
     @Override
     @Transactional
     public User save(User user) {
@@ -43,7 +40,6 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
-    //Actualizar
     @Override
     @Transactional
     public User update(User user, Long id) {
@@ -53,7 +49,6 @@ public class UserService implements IUserService {
         return userRepository.save(existingUser);
     }
 
-    //Borrar por id
     @Override
     @Transactional
     public void deleteById(Long id) {
