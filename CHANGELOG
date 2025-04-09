@@ -1,0 +1,17 @@
+## [1.0.0] - 2025-03-30
+### Added
+- Nueva estructura para manejar registros (`Register`) en lugar de usuarios (`User`).
+
+### Changed
+- Renombrado de clases y archivos:
+  - `UserController` -> `RegisterController`
+  - `UserService` -> `RegisterService`
+  - `UserDto` -> `RegisterDto`
+  - `UserDatasource` -> `RegisterDatasource`
+  - `IUserRepository` -> `IRegisterRepository`
+  - `IUserService` -> `IRegisterService`
+- Actualización de paquetes para reflejar el contexto de "registers".
+- Adaptación de métodos y dependencias para trabajar con la entidad `Register`.
+
+### Removed
+- Referencias a "users" en la carpeta `registers`.

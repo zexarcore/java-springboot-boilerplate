@@ -1,18 +1,24 @@
-package com.app.users.infrastructure;
+package com.app.register.infrastructure;
 
-public class UserDto {
+public class RegisterDto {
     private Long id;
-    private String name;
+    private String vehicle;
+    private String service;
+    private String serviceState;
+    private String operator;
     private String email;
 
     // Empty constructor
-    public UserDto() {
+    public RegisterDto() {
     }
 
     // Constructor with parameters
-    public UserDto(Long id, String name, String email) {
+    public RegisterDto(Long id, String vehicle, String service, String serviceState, String operator, String email) {
         this.id = id;
-        this.name = name;
+        this.vehicle = vehicle;
+        this.service = service;
+        this.serviceState = serviceState;
+        this.operator = operator;
         this.email = email;
     }
 
@@ -25,12 +31,36 @@ public class UserDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getVehicle() {
+        return vehicle;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getServiceState() {
+        return serviceState;
+    }
+
+    public void setServiceState(String serviceState) {
+        this.serviceState = serviceState;
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
     public String getEmail() {
@@ -44,9 +74,12 @@ public class UserDto {
     // toString() method
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "RegisterDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", vehicle='" + vehicle + '\'' +
+                ", service='" + service + '\'' +
+                ", serviceState='" + serviceState + '\'' +
+                ", operator='" + operator + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

@@ -1,4 +1,4 @@
-package com.app.users.domain;
+import com.app.register.domain.ERole;
 
 public enum ERole {
     ROLE_USER,

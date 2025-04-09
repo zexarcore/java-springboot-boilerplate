@@ -1,44 +1,52 @@
-package com.app.users.infrastructure;
+package com.app.register.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.app.users.domain.IUserRepository;
-import com.app.users.domain.User;
+import com.app.register.domain.IRegisterRepository;
+import com.app.register.domain.Register;
 
 @Component
-public class UserDatasource {
+public class RegisterDatasource {
 
-    private final IUserRepository userRepository;
+    private final IRegisterRepository registerRepository;
 
-    public UserDatasource(IUserRepository userRepository) {
-        this.userRepository = userRepository;
+    public RegisterDatasource(IRegisterRepository registerRepository) {
+        this.registerRepository = registerRepository;
     }
 
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+
+    public List<Register> findAll() {
+        return registerRepository.findAll();
     }
 
-    public User save(User user) {
-        return userRepository.save(user);
+  
+    public Optional<Register> findById(Long id) {
+        return registerRepository.findById(id);
     }
 
-    public Optional<User> update(User user, Long id) {
-        return userRepository.findById(id).map(existingUser -> {
-            existingUser.setName(user.getName());
-            existingUser.setEmail(user.getEmail());
-            return userRepository.save(existingUser);
+ 
+    public Register save(Register register) {
+        return registerRepository.save(register);
+    }
+
+
+    public Optional<Register> update(Register register, Long id) {
+        return registerRepository.findById(id).map(existingRegister -> {
+            existingRegister.setVehicle(register.getVehicle());
+            existingRegister.setService(register.getService());
+            existingRegister.setServiceState(register.getServiceState());
+            existingRegister.setOperator(register.getOperator());
+            return registerRepository.save(existingRegister);
         });
     }
 
+   
     public boolean deleteById(Long id) {
-        if (userRepository.existsById(id)) {
-            userRepository.deleteById(id);
+        if (registerRepository.existsById(id)) {
+            registerRepository.deleteById(id);
             return true;
         }
         return false;
