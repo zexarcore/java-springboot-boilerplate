@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "services")
 @Data
-public class Service {
+public class CarService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,11 +21,11 @@ public class Service {
     private String description;
 
     // Empty constructor (required for JPA)
-    public Service() {
+    public CarService() {
     }
 
     // Constructor with parameters
-    public Service(Long id, String name, Double price, String description) {
+    public CarService(Long id, String name, Double price, String description) {
         this.id = id;
         this.name = name;
         this.price = price;

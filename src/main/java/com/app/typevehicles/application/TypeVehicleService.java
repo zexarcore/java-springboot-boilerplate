@@ -7,52 +7,48 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 
-import com.app.users.domain.IUserRepository;
-import com.app.users.domain.IUserService;
-import com.app.users.domain.User;
+import com.app.typevehicles.domain.ITypeVehicleRepository;
+import com.app.typevehicles.domain.ITypeVehicleService;
+import com.app.typevehicles.domain.TypeVehicle;
 
 @Service
-public class TypeVehicleService implements IUserService {
+public class TypeVehicleService implements ITypeVehicleService {
 
-    private final IUserRepository userRepository;
+    private final ITypeVehicleRepository typeVehicleRepository;
 
-    public TypeVehicleService(IUserRepository userRepository) {
-        this.userRepository = userRepository;
+    public TypeVehicleService(ITypeVehicleRepository typeVehicleRepository) {
+        this.typeVehicleRepository = typeVehicleRepository;
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<TypeVehicle> findAll() {
+        return typeVehicleRepository.findAll();
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
-    }
-
-    @Override
-    @Transactional
-    public User save(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new IllegalArgumentException("email registred: " + user.getEmail());
-        }
-        return userRepository.save(user);
+    public TypeVehicle findById(Long id) {
+        return typeVehicleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("typeVehicle not found with ID: " + id));
     }
 
     @Override
     @Transactional
-    public User update(User user, Long id) {
-        User existingUser = findById(id);
-        existingUser.setName(user.getName());
-        existingUser.setEmail(user.getEmail());
-        return userRepository.save(existingUser);
+    public TypeVehicle save(TypeVehicle typevehicle) {
+        return typeVehicleRepository.save(typevehicle);
+    }
+
+    @Override
+    @Transactional
+    public TypeVehicle update(TypeVehicle typevehicle, Long id) {
+        TypeVehicle existingTypeVehicle = findById(id);
+        existingTypeVehicle.setName(typevehicle.getName());
+        return typeVehicleRepository.save(existingTypeVehicle);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        User user = findById(id);
-        userRepository.delete(user);
+        TypeVehicle typeVehicle = findById(id);
+        typeVehicleRepository.delete(typeVehicle);
     }
 }
