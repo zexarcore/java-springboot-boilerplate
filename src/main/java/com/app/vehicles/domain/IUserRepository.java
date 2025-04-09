@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/main/java/com/app/vehicles/domain/IServiceRepository.java
-package com.app.services.domain;
-========
 package com.app.vehicles.domain;
->>>>>>>> master:src/main/java/com/app/vehicles/domain/IVehicleRepository.java
 
 import java.util.List;
 import java.util.Optional;
@@ -12,11 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-<<<<<<<< HEAD:src/main/java/com/app/vehicles/domain/IServiceRepository.java
-public interface IServiceRepository extends JpaRepository<Service, Long> {
-========
 public interface IUserRepository extends JpaRepository<Vehicle, Long> {
->>>>>>>> master:src/main/java/com/app/vehicles/domain/IVehicleRepository.java
 
     // Get all users (already provided by JpaRepository)
     @Override

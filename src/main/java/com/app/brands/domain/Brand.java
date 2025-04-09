@@ -18,11 +18,7 @@ public class Brand {
     public Brand() {}
 
     // Constructor with parameters
-<<<<<<< HEAD:src/main/java/com/app/typevehicles/domain/TypeVehicle.java
-    public TypeVehicle(Long id, String name) {
-=======
     public Brand(Long id, String name) {
->>>>>>> master:src/main/java/com/app/brands/domain/Brand.java
         this.id = id;
         this.name = name;
     }
