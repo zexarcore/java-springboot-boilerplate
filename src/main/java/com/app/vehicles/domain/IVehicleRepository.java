@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IUserRepository extends JpaRepository<Vehicle, Long> {
+public interface IVehicleRepository extends JpaRepository<Vehicle, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
