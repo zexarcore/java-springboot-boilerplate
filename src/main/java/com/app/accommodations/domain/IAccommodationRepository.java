@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IAccommodationRepository extends JpaRepository<Accommodation, Long> {
 
+    boolean existsByNameAndAddress(String name, String address);
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull

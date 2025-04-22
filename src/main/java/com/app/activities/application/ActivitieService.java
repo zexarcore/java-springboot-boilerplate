@@ -21,38 +21,47 @@ public class ActivitieService implements IActivitieService {
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<Activitie> findAll() {
+        return activitieRepository.findAll();
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
+    public Activitie findById(Long id) {
+        return activitieRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Activity not found with ID: " + id));
     }
 
     @Override
     @Transactional
-    public User save(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new IllegalArgumentException("email registred: " + user.getEmail());
+    public Activitie save(Activitie activitie) {
+        boolean yaExiste = activitieRepository.existsByNameAndPrice(
+            activitie.getName(),
+            activitie.getPrice()
+        );
+    
+        if (yaExiste) {
+            throw new IllegalArgumentException("Ya existe una actividad con ese nombre y precio.");
         }
-        return userRepository.save(user);
+    
+        return activitieRepository.save(activitie);
     }
+    
 
     @Override
     @Transactional
-    public User update(User user, Long id) {
-        User existingUser = findById(id);
-        existingUser.setName(user.getName());
-        existingUser.setEmail(user.getEmail());
-        return userRepository.save(existingUser);
+    public Activitie update(Activitie updatedActivitie, Long id) {
+        Activitie existingActivitie = findById(id);
+        existingActivitie.setName(updatedActivitie.getName());
+        existingActivitie.setDescription(updatedActivitie.getDescription());
+        existingActivitie.setSchedule(updatedActivitie.getSchedule());
+        // otros campos a actualizar según tu entidad
+        return activitieRepository.save(existingActivitie);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        User user = findById(id);
-        userRepository.delete(user);
+        Activitie activitie = findById(id);
+        activitieRepository.delete(activitie);
     }
 }

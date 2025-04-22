@@ -13,7 +13,7 @@ import com.app.accommodations.domain.Accommodation;
 
 @Service
 public class AccommodationService implements IAccommodationService {
-
+    
     private final IAccommodationRepository accommodationRepository;
 
     public AccommodationService(IAccommodationRepository accommodationRepository) {
@@ -37,7 +37,12 @@ public class AccommodationService implements IAccommodationService {
     @Override
     @Transactional
     public Accommodation save(Accommodation accommodation) {
-        // Aquí podrías validar por nombre o ubicación si aplica
+        boolean yaExiste = accommodationRepository.existsByNameAndAddress(accommodation.getName(), accommodation.getAddress());
+
+        if (yaExiste) {
+            throw new IllegalArgumentException("Ya existe un alojamiento con ese nombre y dirección.");
+        }
+
         return accommodationRepository.save(accommodation);
     }
 
@@ -47,8 +52,9 @@ public class AccommodationService implements IAccommodationService {
     public Accommodation update(Accommodation updatedAccommodation, Long id) {
         Accommodation existingAccommodation = findById(id);
         existingAccommodation.setName(updatedAccommodation.getName());
-        existingAccommodation.setLocation(updatedAccommodation.getLocation());
-        // otros campos que necesites actualizar
+        existingAccommodation.setAddress(updatedAccommodation.getAddress());
+        existingAccommodation.setPrice_per_night(updatedAccommodation.getPrice_per_night());
+
         return accommodationRepository.save(existingAccommodation);
     }
 

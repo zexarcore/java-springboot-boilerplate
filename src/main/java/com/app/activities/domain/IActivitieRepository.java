@@ -1,5 +1,6 @@
 package com.app.activities.domain;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IActivitieRepository extends JpaRepository<Activitie, Long> {
+
+    boolean existsByNameAndPrice(String name, Double price);
 
     // Get all users (already provided by JpaRepository)
     @Override
