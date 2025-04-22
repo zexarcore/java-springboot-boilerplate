@@ -1,4 +1,4 @@
-package com.app.users.application;
+package com.app.activities.application;
 
 import java.util.List;
 
@@ -7,17 +7,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 
-import com.app.users.domain.IUserRepository;
-import com.app.users.domain.IUserService;
-import com.app.users.domain.User;
+import com.app.activities.domain.IActivitieRepository;
+import com.app.activities.domain.IActivitieService;
+import com.app.activities.domain.Activitie;
 
 @Service
-public class UserService implements IUserService {
+public class ActivitieService implements IActivitieService {
 
-    private final IUserRepository userRepository;
+    private final IActivitieRepository activitieRepository;
 
-    public UserService(IUserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ActivitieService(IActivitieRepository activitieRepository) {
+        this.activitieRepository = activitieRepository;
     }
 
     @Override

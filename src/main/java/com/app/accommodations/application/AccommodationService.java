@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
 
-import com.app.users.domain.IAccommodationRepository;
-import com.app.users.domain.IAccommodationService;
-import com.app.users.domain.Accommodation;
+import com.app.accommodations.domain.IAccommodationRepository;
+import com.app.accommodations.domain.IAccommodationService;
+import com.app.accommodations.domain.Accommodation;
 
 @Service
 public class AccommodationService implements IAccommodationService {
