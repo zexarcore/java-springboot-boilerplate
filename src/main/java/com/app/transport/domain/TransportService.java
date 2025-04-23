@@ -6,11 +6,13 @@ public interface TransportService {
     
     List<Transport> findAll();
 
-    Transport findById(int id);
+    Transport findById(Long id);
 
     Transport save(Transport transpor);
 
-    Transport update(Transport transpor, int id);
+    Transport update(Transport transpor, Long id);
 
     void deleteById(long id);
+
+    Object findById(Class<Long> class1);
 }
