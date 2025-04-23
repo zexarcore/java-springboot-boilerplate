@@ -1,8 +1,8 @@
 package com.app.transport.application;
 
 import com.app.transport.domain.Transport;
-import com.app.transport.domain.TransportService;
-import com.app.transport.domain.TransportRepository;
+import com.app.transport.domain.ITransportService;
+import com.app.transport.domain.ITransportRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/transports")
-public class TransportController {
+public class TransportService {
 
-    private final TransportService transportService;
+    private final ITransportService transportService;
 
-    public TransportController(TransportService transportService) {
+    public TransportService(ITransportService transportService) {
         this.transportService = transportService;
     }
 
@@ -46,5 +46,7 @@ public class TransportController {
         return ResponseEntity.noContent().build();
     }
 }
+
+
 
 

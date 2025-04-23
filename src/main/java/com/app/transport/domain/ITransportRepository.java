@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TransportRepository extends JpaRepository<Transport, Long> {
+public interface ITransportRepository extends JpaRepository<Transport, Long> {
 
     // Get all (already provided by JpaRepository)
     @Override

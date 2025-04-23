@@ -2,7 +2,7 @@ package com.app.transport.domain;
 
 import java.util.List;
 
-public interface TransportService {
+public interface ITransportService {
     
     List<Transport> findAll();
 
