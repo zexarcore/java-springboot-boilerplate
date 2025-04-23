@@ -75,4 +75,24 @@ public class Vehicle {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public Object getBrand() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getBrand'");
+    }
+
+    public void setBrand(Object brand) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setBrand'");
+    }
+
+    public Object getTypeVehicle() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTypeVehicle'");
+    }
+
+    public void setTypeVehicle(Object typeVehicle) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTypeVehicle'");
+    }
 }

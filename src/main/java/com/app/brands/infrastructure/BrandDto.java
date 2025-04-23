@@ -1,16 +1,16 @@
-package com.app.users.infrastructure;
+package com.app.brands.infrastructure;
 
-public class UserDto {
+public class BrandDto {
     private Long id;
     private String name;
     private String email;
 
     // Empty constructor
-    public UserDto() {
+    public BrandDto() {
     }
 
     // Constructor with parameters
-    public UserDto(Long id, String name, String email) {
+    public BrandDto(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;

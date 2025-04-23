@@ -1,5 +1,7 @@
 package com.app.users.domain;
 
+import java.util.Optional;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -32,4 +34,6 @@ public class User {
     @NotNull(message = "Password cannot be null")
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
+
+   
 }

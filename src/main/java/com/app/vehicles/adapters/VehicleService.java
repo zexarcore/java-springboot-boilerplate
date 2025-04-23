@@ -1,4 +1,4 @@
-package com.app.vehicles.application;
+package com.app.vehicles.adapters;
 
 import java.util.List;
 
@@ -33,7 +33,11 @@ public class VehicleService implements IVehicleService {
     @Override
     @Transactional
     public Vehicle save(Vehicle vehicle) {
-        
+        // Validar si la placa es válida
+        if (vehicle.getPlate() == null || vehicle.getPlate().isEmpty()) {
+            throw new IllegalArgumentException("Plate cannot be null or empty");
+        }
+        // Validar si la placa ya está registrada
         if (vehicleRepository.existsByPlate(vehicle.getPlate())) {
             throw new IllegalArgumentException("Plate already registered: " + vehicle.getPlate());
         }
@@ -44,6 +48,21 @@ public class VehicleService implements IVehicleService {
     @Transactional
     public Vehicle update(Vehicle vehicle, Long id) {
         Vehicle existingVehicle = findById(id);
+
+        // Validar los campos del vehículo proporcionado
+        if (vehicle.getPlate() == null || vehicle.getPlate().isEmpty()) {
+            throw new IllegalArgumentException("Plate cannot be null or empty");
+        }
+        if (vehicle.getTypeVehicle() == null) {
+            throw new IllegalArgumentException("TypeVehicle cannot be null");
+        }
+        if (vehicle.getBrand() == null) {
+            throw new IllegalArgumentException("Brand cannot be null");
+        }
+        if (vehicle.getColor() == null || vehicle.getColor().isEmpty()) {
+            throw new IllegalArgumentException("Color cannot be null or empty");
+        }
+
         existingVehicle.setPlate(vehicle.getPlate());
         existingVehicle.setTypeVehicle(vehicle.getTypeVehicle());
         existingVehicle.setBrand(vehicle.getBrand());

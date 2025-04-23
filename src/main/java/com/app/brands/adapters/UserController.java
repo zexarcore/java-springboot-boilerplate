@@ -1,4 +1,4 @@
-package com.app.users.adapters;
+package com.app.brands.adapters;
 
 import java.util.List;
 
