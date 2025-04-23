@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IItinerarieRepository extends JpaRepository<Itinerarie, Long> {
+    boolean existsByNameAndDestination(String name, String creation_date);
+
 
     // Get all users (already provided by JpaRepository)
     @Override

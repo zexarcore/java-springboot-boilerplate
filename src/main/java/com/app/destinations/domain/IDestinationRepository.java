@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IDestinationRepository extends JpaRepository<Destination, Long> {
 
+    boolean existsByNameAndCountry(String name, String location);
+
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull
