@@ -1,4 +1,4 @@
-package com.app.brands.domain;
+package com.app.users.domain;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,24 +7,23 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface IBrandRepository extends JpaRepository<Brand, Long> {
+public interface IUserRepository extends JpaRepository<Register, Long> {
 
     // Get all users (already provided by JpaRepository)
     @Override
     @NonNull
-    List<Brand> findAll();
+    List<Register> findAll();
 
     // Search user by ID (already provided by JpaRepository)
     @Override
     @NonNull
-    Optional<Brand> findById(@NonNull Long id);
+    Optional<Register> findById(@NonNull Long id);
 
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends Brand> S save(@NonNull S brand);
+    <S extends Register> S save(@NonNull S user);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override
@@ -35,11 +34,10 @@ public interface IBrandRepository extends JpaRepository<Brand, Long> {
     void deleteById(@NonNull Long id);
 
     // Additional application-specific methods:
-    /* 
+
     // Search for a user by their email
-    Optional<Brand> findByName(String name);
+    Optional<Register> findByEmail(String email);
 
     // Check if an email is already registered
-    boolean existsByName(String name);  */
-
+    boolean existsByEmail(String email);
 }

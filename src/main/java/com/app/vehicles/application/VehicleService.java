@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.shared.adapters.exception.ResourceNotFoundException;
+
 import com.app.vehicles.domain.IVehicleRepository;
 import com.app.vehicles.domain.IVehicleService;
 import com.app.vehicles.domain.Vehicle;
@@ -27,26 +28,35 @@ public class VehicleService implements IVehicleService {
     @Override
     public Vehicle findById(Long id) {
         return vehicleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Vehicle not found with ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
     }
 
     @Override
     @Transactional
     public Vehicle save(Vehicle vehicle) {
-        
         if (vehicleRepository.existsByPlate(vehicle.getPlate())) {
-            throw new IllegalArgumentException("Plate already registered: " + vehicle.getPlate());
+            throw new IllegalArgumentException("Plate registred: " + vehicle.getPlate());
+        }
+        if (vehicleRepository.existsByTypevehiculo(vehicle.getTypeVehicleId())) {
+            throw new IllegalArgumentException("Type registred: " + vehicle.getTypeVehicleId());
+        }
+        if (vehicleRepository.existsByBrandid(vehicle.getBrandId())) {
+            throw new IllegalArgumentException("Brand id registred: " + vehicle.getBrandId());
+        }
+        if (vehicleRepository.existsByColor(vehicle.getColor())) {
+            throw new IllegalArgumentException("Color registred: " + vehicle.getColor());
         }
         return vehicleRepository.save(vehicle);
     }
+
 
     @Override
     @Transactional
     public Vehicle update(Vehicle vehicle, Long id) {
         Vehicle existingVehicle = findById(id);
         existingVehicle.setPlate(vehicle.getPlate());
-        existingVehicle.setTypeVehicle(vehicle.getTypeVehicle());
-        existingVehicle.setBrand(vehicle.getBrand());
+        existingVehicle.setTypeVehicleId(vehicle.getTypeVehicleId());
+        existingVehicle.setBrandId(vehicle.getBrandId());
         existingVehicle.setColor(vehicle.getColor());
         return vehicleRepository.save(existingVehicle);
     }

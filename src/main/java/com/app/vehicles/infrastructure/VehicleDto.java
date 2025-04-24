@@ -3,8 +3,8 @@ package com.app.vehicles.infrastructure;
 public class VehicleDto {
     private Long id;
     private String plate;
-    private String typeVehicle;
-    private String brand;
+    private String typeVehicleId;
+    private String brandId;
     private String color;
 
     // Empty constructor
@@ -12,11 +12,11 @@ public class VehicleDto {
     }
 
     // Constructor with parameters
-    public VehicleDto(Long id, String plate, String typeVehicle, String brand, String color) {
+    public VehicleDto(Long id, String plate, String typeVehicleId, String brandId, String color) {
         this.id = id;
         this.plate = plate;
-        this.typeVehicle = typeVehicle;
-        this.brand = brand;
+        this.typeVehicleId = typeVehicleId;
+        this.brandId = brandId;
         this.color = color;
     }
 
@@ -37,20 +37,20 @@ public class VehicleDto {
         this.plate = plate;
     }
 
-    public String getTypeVehicle() {
-        return typeVehicle;
+    public String getTypeVehicleId() {
+        return typeVehicleId;
     }
 
-    public void setTypeVehicle(String typeVehicle) {
-        this.typeVehicle = typeVehicle;
+    public void setTypeVehicleId(String typeVehicleId) {
+        this.typeVehicleId = typeVehicleId;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getBrandId() {
+        return brandId;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setBrandId(String brandId) {
+        this.brandId = brandId;
     }
 
     public String getColor() {
@@ -67,8 +67,8 @@ public class VehicleDto {
         return "VehicleDto{" +
                 "id=" + id +
                 ", plate='" + plate + '\'' +
-                ", typeVehicle='" + typeVehicle + '\'' +
-                ", brand='" + brand + '\'' +
+                ", typeVehicleId='" + typeVehicleId + '\'' +
+                ", brandId='" + brandId + '\'' +
                 ", color='" + color + '\'' +
                 '}';
     }

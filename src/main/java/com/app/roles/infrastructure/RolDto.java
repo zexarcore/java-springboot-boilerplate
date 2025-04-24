@@ -1,20 +1,22 @@
-package com.app.typevehicles.infrastructure;
+package com.app.roles.infrastructure;
 
-public class TypeVehicleDto {
+public class RolDto {
     private Long id;
     private String name;
+    private String typeOperator;
 
     // Empty constructor
-    public TypeVehicleDto() {
+    public RolDto() {
     }
 
     // Constructor with parameters
-    public TypeVehicleDto(Long id, String name, String email) {
+    public RolDto(Long id, String name, String typeOperator) {
         this.id = id;
         this.name = name;
+        this.typeOperator = typeOperator;
     }
 
-    // Getters y Setters
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -31,12 +33,21 @@ public class TypeVehicleDto {
         this.name = name;
     }
 
+    public String getTypeOperator() {
+        return typeOperator;
+    }
+
+    public void setTypeOperator(String typeOperator) {
+        this.typeOperator = typeOperator;
+    }
+
     // toString() method
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "RolDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", typeOperator='" + typeOperator + '\'' +
                 '}';
     }
 }

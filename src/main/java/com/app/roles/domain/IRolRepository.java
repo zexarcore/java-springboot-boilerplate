@@ -36,8 +36,8 @@ public interface IRolRepository extends JpaRepository<Rol, Long> {
     // Additional application-specific methods:
 
     // Search for a user by their email
-    Optional<Rol> findByEmail(String email);
+    Optional<Rol> findByTypeOperator(String typeOperator);
 
     // Check if an email is already registered
-    boolean existsByEmail(String email);
+    boolean existsByTypeOperator(String typeOperator);
 }
