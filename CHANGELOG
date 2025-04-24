@@ -15,3 +15,71 @@
 
 ### Removed
 - Referencias a "users" en la carpeta `registers`.
+
+### Add
+-Se añaden 5 carpetas `vehicles`, `brands`, `roles`, `typevehicles`, `service`
+
+### Changed
+- Renombrado de clases y archivos:
+  - `UserController` -> `VehicleController`
+  - `UserService` -> `VehicleService`
+  - `UserDto` -> `VehicleDto`
+  - `UserDatasource` -> `VehicleDatasource`
+  - `IUserRepository` -> `IVehicleRepository`
+  - `IUserService` -> `IVehicleService`
+  - `User` -> `Vehicle`
+- Actualización de paquetes para reflejar el contexto de "Vehicle".
+- Adaptación de métodos y dependencias para trabajar con la entidad `Vehicle`.
+
+### Changed
+- Renombrado de clases y archivos:
+  - `UserController` -> `BrandController`
+  - `UserService` -> `BrandService`
+  - `UserDto` -> `BrandDto`
+  - `UserDatasource` -> `BrandDatasource`
+  - `IUserRepository` -> `IBrandRepository`
+  - `IUserService` -> `IBrandService`
+  - `User` -> `Brand`
+- Actualización de paquetes para reflejar el contexto de "brands".
+- Adaptación de métodos y dependencias para trabajar con la entidad `brands`.
+
+### Changed
+- Renombrado de clases y archivos:
+  - `UserController` -> `RolController`
+  - `UserService` -> `RolService`
+  - `UserDto` -> `RolDto`
+  - `UserDatasource` -> `RolDatasource`
+  - `IUserRepository` -> `IRolRepository`
+  - `IUserService` -> `IRolService`
+  - `User` -> `Rol`
+- Actualización de paquetes para reflejar el contexto de "roles".
+- Adaptación de métodos y dependencias para trabajar con la entidad `roles`.
+
+### Changed
+- Renombrado de clases y archivos:
+  - `UserController` -> `TypeVehicleController`
+  - `UserService` -> `TypeVehicleService`
+  - `UserDto` -> `TypeVehicleDto`
+  - `UserDatasource` -> `TypeVehicleDatasource`
+  - `IUserRepository` -> `ITypeVehicleRepository`
+  - `IUserService` -> `ITypeVehicleService`
+  - `User` -> `TypeVehicle`
+- Actualización de paquetes para reflejar el contexto de "TypeVehicle".
+- Adaptación de métodos y dependencias para trabajar con la entidad `TypeVehicle`.
+
+### Changed
+- Renombrado de clases y archivos:
+  - `UserController` -> `ServiceController`
+  - `UserService` -> `ServiceService`
+  - `UserDto` -> `ServiceDto`
+  - `UserDatasource` -> `ServiceDatasource`
+  - `IUserRepository` -> `IServiceRepository`
+  - `IUserService` -> `IServiceService`
+  - `User` -> `Service`
+- Actualización de paquetes para reflejar el contexto de "service".
+- Adaptación de métodos y dependencias para trabajar con la entidad `service`.
+
+### Removed 
+- reference a "VehiclesDeailsServiceImpl.java" en la carpeta `vehicles`
+- reference a "BrandDeailsServiceImpl.java" en la carpeta `brands`
+- reference a "RolDeailsServiceImpl.java" en la carpeta `roles`
