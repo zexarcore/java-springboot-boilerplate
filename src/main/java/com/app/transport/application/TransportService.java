@@ -1,52 +1,65 @@
 package com.app.transport.application;
 
-import com.app.transport.domain.Transport;
-import com.app.transport.domain.ITransportService;
-import com.app.transport.domain.ITransportRepository;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/transports")
-public class TransportService {
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-    private final ITransportService transportService;
+import com.app.shared.adapters.exception.ResourceNotFoundException;
 
-    public TransportService(ITransportService transportService) {
-        this.transportService = transportService;
+import com.app.transport.domain.ITransportRepository;
+import com.app.transport.domain.ITransportService;
+import com.app.transport.domain.Transport;
+
+@Service
+public class TransportService implements ITransportService {
+
+    private final ITransportRepository transportRepository;
+
+    public TransportService(ITransportRepository transportRepository) {
+        this.transportRepository = transportRepository;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Transport>> findAll() {
-        return ResponseEntity.ok(transportService.findAll());
+    @Override
+    public List<Transport> findAll() {
+        return transportRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Transport> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(transportService.findById(id));
+    @Override
+    public Transport findById(Long id) {
+        return transportRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Transport not found with ID: " + id));
     }
 
-    @PostMapping
-    public ResponseEntity<Transport> save(@RequestBody Transport transport) {
-        Transport savedTransport = transportService.save(transport);
-        return ResponseEntity.ok(savedTransport);
+    @Override
+    @Transactional
+    public Transport save(Transport transport) {
+        boolean alreadyExists = transportRepository.existsByDurationAndPrice(
+            transport.getDuration(),
+            transport.getPrice()
+        );
+    
+        if (alreadyExists) {
+            throw new IllegalArgumentException("A transport with this duration and price already exists.");
+        }
+    
+        return transportRepository.save(transport);
+    }
+    
+    @Override
+    @Transactional
+    public Transport update(Transport updatedTransport, Long id) {
+        Transport existingTransport = findById(id);
+        existingTransport.setDuration(updatedTransport.getDuration());
+        existingTransport.setPrice(updatedTransport.getPrice());
+        // Any other fields to update based on your entity
+        return transportRepository.save(existingTransport);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Transport> update(@RequestBody Transport transport, @PathVariable Long id) {
-        Transport updatedTransport = transportService.update(transport, id);
-        return ResponseEntity.ok(updatedTransport);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        transportService.deleteById(id);
-        return ResponseEntity.noContent().build();
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        Transport transport = findById(id);
+        transportRepository.delete(transport);
     }
 }
-
-
-
-
