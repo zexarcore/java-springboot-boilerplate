@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ITransportRepository extends JpaRepository<Transport, Long> {
-
+    boolean existsByDurationAndPrice(String name, Double duration);
     // Get all (already provided by JpaRepository)
     @Override
     @NonNull

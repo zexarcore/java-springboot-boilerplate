@@ -12,7 +12,5 @@ public interface ITransportService {
 
     Transport update(Transport transpor, Long id);
 
-    void deleteById(long id);
-
-    Object findById(Class<Long> class1);
+    void deleteById(Long id);
 }

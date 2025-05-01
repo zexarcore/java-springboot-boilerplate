@@ -56,7 +56,7 @@ public class TransportService implements ITransportService {
         return transportRepository.save(existingTransport);
     }
 
-    @Override
+   
     @Transactional
     public void deleteById(Long id) {
         Transport transport = findById(id);
