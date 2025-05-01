@@ -1,19 +1,19 @@
-package com.app.users.infrastructure;
+package com.app.destinations.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.app.destinations.domain.IDestinationRepository;
 import com.app.users.domain.IUserRepository;
-import com.app.users.domain.User;
 
 @Component
-public class UserDatasource {
+public class DestinationsDatasource {
 
-    private final IUserRepository userRepository;
+    private final IDestinationRepository userRepository;
 
-    public UserDatasource(IUserRepository userRepository) {
+    public DestinationsDatasource(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
