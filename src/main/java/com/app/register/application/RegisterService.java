@@ -2,6 +2,7 @@ package com.app.register.application;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,9 +34,6 @@ public class RegisterService implements IRegisterService {
     @Override
     @Transactional
     public Register save(Register register) {
-        if (registerRepository.existsByEmail(register.getEmail())) {
-            throw new DuplicateEmailException("Email already registered: " + register.getEmail());
-        }
         validateRegister(register);
         return registerRepository.save(register);
     }
@@ -59,11 +57,23 @@ public class RegisterService implements IRegisterService {
     }
 
     private void validateRegister(Register register) {
-        if (register.getEmail() == null || !register.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            throw new IllegalArgumentException("Invalid email format");
+        if (register.getUser_id() <= 0) {
+            throw new IllegalArgumentException("User ID must be greater than 0");
         }
-        if (register.getVehicle() == null) {
-            throw new IllegalArgumentException("Vehicle cannot be null");
+        if (register.getVehicle() <= 0) {
+            throw new IllegalArgumentException("Vehicle ID must be greater than 0");
+        }
+        if (register.getService() <= 0) {
+            throw new IllegalArgumentException("Service ID must be greater than 0");
+        }
+        if (register.getServiceState() <= 0) {
+            throw new IllegalArgumentException("ServiceState ID must be greater than 0");
+        }
+        if (register.getOperator() <= 0) {
+            throw new IllegalArgumentException("Operator ID must be greater than 0");
+        }
+        if (register.getRegisterDate() == null) {
+            throw new IllegalArgumentException("RegisterDate cannot be null");
         }
     }
 }

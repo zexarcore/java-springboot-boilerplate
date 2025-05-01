@@ -35,5 +35,10 @@ public class User {
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
+    public Optional<User> getRoles() {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'getRoles'");
+    }
+
    
 }

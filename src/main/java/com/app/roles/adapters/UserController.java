@@ -1,4 +1,4 @@
-package com.app.users.adapters;
+package com.app.roles.adapters;
 
 import java.util.List;
 

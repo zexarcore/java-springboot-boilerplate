@@ -1,4 +1,4 @@
-package com.app.users.infrastructure;
+package com.app.roles.infrastructure;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,11 +9,11 @@ import com.app.users.domain.IUserRepository;
 import com.app.users.domain.User;
 
 @Component
-public class UserDatasource {
+public class RoleDatasource {
 
     private final IUserRepository userRepository;
 
-    public UserDatasource(IUserRepository userRepository) {
+    public RoleDatasource(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
