@@ -28,14 +28,14 @@ public class RolService implements IRolService {
     @Override
     public Rol findById(Long id) {
         return rolRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found with ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
     }
 
     @Override
     @Transactional
     public Rol save(Rol rol) {
-        if (rolRepository.existsByName(rol.getName())) {
-            throw new IllegalArgumentException("Role name already registered: " + rol.getName());
+        if (rolRepository.existsByTypeOperator(rol.getTypeOperator())) {
+            throw new IllegalArgumentException("type operator registred: " + rol.getTypeOperator());
         }
         return rolRepository.save(rol);
     }

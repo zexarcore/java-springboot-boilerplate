@@ -15,16 +15,16 @@ public class Rol {
     private String name;
 
     @Column(nullable = true)  
-    private String type_operator;
+    private String typeOperator;
 
     // Empty constructor (required for JPA)
     public Rol() {}
 
     // Constructor with parameters
-    public Rol(Long id, String name, String type_operator) {
+    public Rol(Long id, String name, String typeOperator) {
         this.id = id;
         this.name = name;
-        this.type_operator = type_operator;
+        this.typeOperator = typeOperator;
     }
 
     // Getters y Setters
@@ -37,7 +37,7 @@ public class Rol {
     }
 
     public String getTypeOperator() {
-        return type_operator;
+        return typeOperator;
     }
 
     // Setters
@@ -49,7 +49,7 @@ public class Rol {
         this.name = name;
     }
 
-    public void setTypeOperator(String type_operator) {
-        this.type_operator = type_operator;
+    public void setTypeOperator(String typeOperator) {
+        this.typeOperator = typeOperator;
     }
 }

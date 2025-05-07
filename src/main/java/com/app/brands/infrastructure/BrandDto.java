@@ -3,20 +3,18 @@ package com.app.brands.infrastructure;
 public class BrandDto {
     private Long id;
     private String name;
-    private String email;
 
     // Empty constructor
     public BrandDto() {
     }
 
     // Constructor with parameters
-    public BrandDto(Long id, String name, String email) {
+    public BrandDto(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.email = email;
     }
 
-    // Getters y Setters
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -33,21 +31,12 @@ public class BrandDto {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     // toString() method
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "BrandDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
                 '}';
     }
 }

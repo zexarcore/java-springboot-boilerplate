@@ -1,22 +1,22 @@
 package com.app.roles.infrastructure;
 
-public class RoleDto {
+public class RolDto {
     private Long id;
     private String name;
-    private String email;
+    private String typeOperator;
 
     // Empty constructor
-    public RoleDto() {
+    public RolDto() {
     }
 
     // Constructor with parameters
-    public RoleDto(Long id, String name, String email) {
+    public RolDto(Long id, String name, String typeOperator) {
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.typeOperator = typeOperator;
     }
 
-    // Getters y Setters
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -33,21 +33,21 @@ public class RoleDto {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTypeOperator() {
+        return typeOperator;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTypeOperator(String typeOperator) {
+        this.typeOperator = typeOperator;
     }
 
     // toString() method
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "RolDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", typeOperator='" + typeOperator + '\'' +
                 '}';
     }
 }

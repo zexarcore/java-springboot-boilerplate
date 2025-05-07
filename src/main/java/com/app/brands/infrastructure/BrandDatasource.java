@@ -5,40 +5,39 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.app.users.domain.IUserRepository;
-import com.app.users.domain.User;
+import com.app.brands.domain.Brand;
+import com.app.brands.domain.IBrandRepository;
 
 @Component
 public class BrandDatasource {
 
-    private final IUserRepository userRepository;
+    private final IBrandRepository brandRepository;
 
-    public BrandDatasource(IUserRepository userRepository) {
-        this.userRepository = userRepository;
+    public BrandDatasource(IBrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
     }
 
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<Brand> findAll() {
+        return brandRepository.findAll();
     }
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
-
-    public User save(User user) {
-        return userRepository.save(user);
+    public Optional<Brand> findById(Long id) {
+        return brandRepository.findById(id);
     }
 
-    public Optional<User> update(User user, Long id) {
-        return userRepository.findById(id).map(existingUser -> {
-            existingUser.setName(user.getName());
-            existingUser.setEmail(user.getEmail());
-            return userRepository.save(existingUser);
-        });
+    public Brand save(Brand brand){
+        return brandRepository.save(brand);
+    }
+
+    public Optional<Brand> update(Brand brand, Long id) {
+    return brandRepository.findById(id).map(existingBrand -> {
+        existingBrand.setName(brand.getName());
+        return brandRepository.save(existingBrand);
+    });
     }
 
     public boolean deleteById(Long id) {
-        if (userRepository.existsById(id)) {
-            userRepository.deleteById(id);
+        if (brandRepository.existsById(id)) {
+            brandRepository.deleteById(id);
             return true;
         }
         return false;
