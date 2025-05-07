@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public interface IBrandRepository extends JpaRepository<Brand, Long> {
 
@@ -34,10 +35,11 @@ public interface IBrandRepository extends JpaRepository<Brand, Long> {
     void deleteById(@NonNull Long id);
 
     // Additional application-specific methods:
-
+    /* 
     // Search for a user by their email
-    Optional<Brand> findByEmail(String email);
+    Optional<Brand> findByName(String name);
 
     // Check if an email is already registered
-    boolean existsByEmail(String email);
+    boolean existsByName(String name);  */
+
 }

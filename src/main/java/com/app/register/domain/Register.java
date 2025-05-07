@@ -7,32 +7,44 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Entity
-@Table(name = "registers") 
+@Table(name = "registers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Register {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id; // Cambiado de userId a id para mayor claridad
+    @ManyToOne
+    @Column(name = "user_id", nullable = false)
+    @NotNull(message = "user cannot be null")
+    private int User_id;
 
     @ManyToOne
-    @JoinColumn(name = "vehicle_id", nullable = false) 
-    @NotNull
-    private Vehicle vehicle;
+    @Column(name = "vehicle_id", nullable = false)
+    @NotNull(message = "Vehicle cannot be null")
+    private int vehicle;
 
     @ManyToOne
-    @JoinColumn(name = "service_id", nullable = false, unique = true) 
-    @NotNull
-    private Service service;
+    @Column(name = "service_id", nullable = false)
+    @NotNull(message = "Service cannot be null")
+    private int service;
 
     @ManyToOne
-    @JoinColumn(name = "service_state_id", nullable = false)
-    @NotNull
-    private ServiceState serviceState;
+    @Column(name = "service_state_id", nullable = false)
+    @NotNull(message = "ServiceState cannot be null")
+    private int serviceState;
 
     @ManyToOne
-    @JoinColumn(name = "operator_id", nullable = false) 
-    @NotNull
-    private Operator operator;
+    @Column(name = "operator_id", nullable = false)
+    @NotNull(message = "Operator cannot be null")
+    private int operator;
+
+    @ManyToOne
+    @Column(name = "RegisterData", nullable = false)
+    @NotNull(message = "Data cannot be null")
+    private Data RegisterDate;
+
 }

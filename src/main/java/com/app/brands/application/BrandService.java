@@ -16,8 +16,8 @@ public class BrandService implements IBrandService {
 
     private final IBrandRepository brandRepository;
 
-    public BrandService(IBrandRepository userRepository) {
-        this.brandRepository = userRepository;
+    public BrandService(IBrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
     }
 
     @Override
@@ -28,15 +28,12 @@ public class BrandService implements IBrandService {
     @Override
     public Brand findById(Long id) {
         return brandRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("user not found with ID: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("brand not found with ID: " + id));
     }
 
     @Override
     @Transactional
     public Brand save(Brand brand) {
-        if (brandRepository.existsByEmail(brand.getEmail())) {
-            throw new IllegalArgumentException("email registred: " + brand.getEmail());
-        }
         return brandRepository.save(brand);
     }
 
@@ -45,7 +42,6 @@ public class BrandService implements IBrandService {
     public Brand update(Brand brand, Long id) {
         Brand existingBrand = findById(id);
         existingBrand.setName(brand.getName());
-        existingBrand.setEmail(brand.getEmail());
         return brandRepository.save(existingBrand);
     }
 

@@ -15,10 +15,10 @@ public class Vehicle {
     private String plate;
 
     @Column(nullable = false)
-    private int type_vehicle_id;
+    private String typeVehicleId;
 
     @Column(nullable = false)
-    private int brand_id;
+    private String brandId;
 
     @Column(nullable = false, unique = true)
     private String color;
@@ -27,11 +27,11 @@ public class Vehicle {
     public Vehicle() {}
 
     // Constructor with parameters
-    public Vehicle(Long id, String plate, int type_vehicle_id, int brand_id, String color) {
+    public Vehicle(Long id, String plate,String typeVehicleId, String brandId, String color) {
         this.id = id;
         this.plate = plate;
-        this.type_vehicle_id = type_vehicle_id; 
-        this.brand_id = brand_id;
+        this.typeVehicleId = typeVehicleId; 
+        this.brandId = brandId;
         this.color = color;
     }
 
@@ -44,18 +44,19 @@ public class Vehicle {
         return plate;
     }
 
-    public int getType_vehicle_id() {
-        return type_vehicle_id;
+    public String getTypeVehicleId() {
+        return typeVehicleId;
     }
 
-    public int getBrand_id() {
-        return brand_id;
+    public String getBrandId() {
+        return brandId;
     }
 
     public String getColor() {
         return color;
     }
 
+    // Setters
     public void setId(Long id) {
         this.id = id;
     }
@@ -64,12 +65,12 @@ public class Vehicle {
         this.plate = plate;
     }
 
-    public void setType_vehicle_id(int type_vehicle_id) {
-        this.type_vehicle_id = type_vehicle_id;
+    public void setTypeVehicleId(String typeVehicleId) {
+        this.typeVehicleId = typeVehicleId;
     }
 
-    public void setBrand_id(int brand_id) {
-        this.brand_id = brand_id;
+    public void setBrandId(String brandId) {
+        this.brandId = brandId;
     }
 
     public void setColor(String color) {
