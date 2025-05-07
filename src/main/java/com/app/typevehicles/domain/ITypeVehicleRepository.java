@@ -33,5 +33,4 @@ public interface ITypeVehicleRepository extends JpaRepository<TypeVehicle, Long>
     @Override
     void deleteById(@NonNull Long id);
 
-    TypeVehicle update(TypeVehicle typeVehicle, Long id);
 }
