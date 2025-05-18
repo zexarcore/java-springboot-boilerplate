@@ -34,7 +34,7 @@ public class DestinationService implements IDestinationService {
     @Override
 @Transactional
 public Destination save(Destination destination) {
-    boolean yaExiste = destinationRepository.existsByNameAndCountry(
+    boolean yaExiste = destinationRepository.existsByNameAndLocation(
         destination.getName(),
         destination.getLocation()
     );

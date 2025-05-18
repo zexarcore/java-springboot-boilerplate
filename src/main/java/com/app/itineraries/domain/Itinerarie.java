@@ -18,7 +18,7 @@ public class Itinerarie {
     private String name;
 
     @Column(nullable = false)
-    private String creation_date;
+    private String creationDate;
 
     // Empty constructor (required for JPA)
     public Itinerarie() {
@@ -29,7 +29,7 @@ public class Itinerarie {
         this.id = id;
         this.users_Id = users_Id;
         this.name = name;
-        this.creation_date = creation_date;
+        this.creationDate = creation_date;
     }
 
     // Getters y Setters
@@ -58,10 +58,10 @@ public class Itinerarie {
     }
 
     public String getCreation_date() {
-        return this.creation_date;
+        return this.creationDate;
     }
 
     public void setCreation_date(String creation_date) {
-        this.creation_date = creation_date;
+        this.creationDate = creation_date;
     }
 }

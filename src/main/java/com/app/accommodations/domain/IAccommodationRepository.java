@@ -33,12 +33,4 @@ public interface IAccommodationRepository extends JpaRepository<Accommodation, L
     // Delete user by ID (already provided by JpaRepository)
     @Override
     void deleteById(@NonNull Long id);
-
-    // Additional application-specific methods:
-
-    // Search for a user by their email
-    Optional<Accommodation> findByEmail(String email);
-
-    // Check if an email is already registered
-    boolean existsByEmail(String email);
 }

@@ -33,9 +33,9 @@ public class ItinerarieService implements IItinerarieService {
     @Override
 @Transactional
 public Itinerarie save(Itinerarie itinerarie) {
-    boolean yaExiste = itinerarieRepository.existsByNameAndDestination(
+    boolean yaExiste = itinerarieRepository.existsByNameAndCreationDate(
         itinerarie.getName(),
-        itinerarie.getCreation_date()
+        itinerarie.getCreationDate()
     );
 
     if (yaExiste) {

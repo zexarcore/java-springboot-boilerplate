@@ -23,7 +23,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Long>
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends Reservation> S save(@NonNull S user);
+    <S extends Reservation> S save(@NonNull S Reservation);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override
@@ -32,12 +32,4 @@ public interface IReservationRepository extends JpaRepository<Reservation, Long>
     // Delete user by ID (already provided by JpaRepository)
     @Override
     void deleteById(@NonNull Long id);
-
-    // Additional application-specific methods:
-
-    // Search for a user by their email
-    Optional<Reservation> findByEmail(String email);
-
-    // Check if an email is already registered
-    boolean existsByEmail(String email);
 }

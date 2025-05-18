@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IItinerarieRepository extends JpaRepository<Itinerarie, Long> {
-    boolean existsByNameAndDestination(String name, String creation_date);
+    boolean existsByNameAndCreationDate(String name, String creationDate);
 
 
     // Get all users (already provided by JpaRepository)
@@ -25,7 +25,7 @@ public interface IItinerarieRepository extends JpaRepository<Itinerarie, Long> {
     // Save a user (already provided by JpaRepository)
     @Override
     @NonNull
-    <S extends Itinerarie> S save(@NonNull S user);
+    <S extends Itinerarie> S save(@NonNull S itinerarie);
 
     // Check if a user with a specific ID exists (already provided by JpaRepository)
     @Override
