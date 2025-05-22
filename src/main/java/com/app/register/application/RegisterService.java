@@ -57,19 +57,19 @@ public class RegisterService implements IRegisterService {
     }
 
     private void validateRegister(Register register) {
-        if (register.getUser_id() <= 0) {
+        if (register.getUserId() <= 0) {
             throw new IllegalArgumentException("User ID must be greater than 0");
         }
-        if (register.getVehicle() <= 0) {
+        if (register.getVehicleId() <= 0) {
             throw new IllegalArgumentException("Vehicle ID must be greater than 0");
         }
-        if (register.getService() <= 0) {
+        if (register.getServiceId() <= 0) {
             throw new IllegalArgumentException("Service ID must be greater than 0");
         }
-        if (register.getServiceState() <= 0) {
+        if (register.getServiceStateId() <= 0) {
             throw new IllegalArgumentException("ServiceState ID must be greater than 0");
         }
-        if (register.getOperator() <= 0) {
+        if (register.getOperatorId() <= 0) {
             throw new IllegalArgumentException("Operator ID must be greater than 0");
         }
         if (register.getRegisterDate() == null) {

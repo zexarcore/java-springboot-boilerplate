@@ -33,15 +33,17 @@ public class RegisterDatasource {
     }
 
 
-    public Optional<Register> update(Register register, Long id) {
-        return registerRepository.findById(id).map(existingRegister -> {
-            existingRegister.setVehicle(register.getVehicle());
-            existingRegister.setService(register.getService());
-            existingRegister.setServiceState(register.getServiceState());
-            existingRegister.setOperator(register.getOperator());
-            return registerRepository.save(existingRegister);
-        });
-    }
+   public Optional<Register> update(Register register, Long id) {
+    return registerRepository.findById(id).map(existingRegister -> {
+        existingRegister.setVehicleId(register.getVehicleId());
+        existingRegister.setServiceId(register.getServiceId());
+        existingRegister.setServiceStateId(register.getServiceStateId());
+        existingRegister.setOperatorId(register.getOperatorId());
+        existingRegister.setUserId(register.getUserId());
+        existingRegister.setRegisterDate(register.getRegisterDate());
+        return registerRepository.save(existingRegister);
+    });
+}
 
    
     public boolean deleteById(Long id) {
