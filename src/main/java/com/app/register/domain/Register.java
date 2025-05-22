@@ -6,45 +6,41 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "registers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Register {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Cambiado de userId a id para mayor claridad
-    @ManyToOne
+    private Long id;
+
     @Column(name = "user_id", nullable = false)
     @NotNull(message = "user cannot be null")
-    private int User_id;
+    private int userId; 
 
-    @ManyToOne
     @Column(name = "vehicle_id", nullable = false)
     @NotNull(message = "Vehicle cannot be null")
-    private int vehicle;
+    private int vehicleId; 
 
-    @ManyToOne
     @Column(name = "service_id", nullable = false)
     @NotNull(message = "Service cannot be null")
-    private int service;
+    private int serviceId; 
 
-    @ManyToOne
     @Column(name = "service_state_id", nullable = false)
     @NotNull(message = "ServiceState cannot be null")
-    private int serviceState;
+    private int serviceStateId; 
 
-    @ManyToOne
     @Column(name = "operator_id", nullable = false)
     @NotNull(message = "Operator cannot be null")
-    private int operator;
+    private int operatorId; 
 
-    @ManyToOne
-    @Column(name = "RegisterData", nullable = false)
-    @NotNull(message = "Data cannot be null")
-    private Data RegisterDate;
-
+    @Column(name = "register_date", nullable = false)
+    @NotNull(message = "Date cannot be null")
+    @Temporal(TemporalType.TIMESTAMP) 
+    private Date registerDate; 
 }
