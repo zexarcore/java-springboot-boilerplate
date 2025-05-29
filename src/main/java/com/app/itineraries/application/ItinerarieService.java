@@ -51,7 +51,7 @@ public Itinerarie save(Itinerarie itinerarie) {
     public Itinerarie update(Itinerarie updatedItinerarie, Long id) {
         Itinerarie existingItinerarie = findById(id);
         existingItinerarie.setName(updatedItinerarie.getName());
-        existingItinerarie.setCreation_date(updatedItinerarie.getCreation_date());
+        existingItinerarie.setCreationDate(updatedItinerarie.getCreationDate());
         // Agrega otros campos que tengas en tu entidad
         return itinerarieRepository.save(existingItinerarie);
     }

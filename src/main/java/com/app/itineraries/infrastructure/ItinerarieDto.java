@@ -4,21 +4,21 @@ public class ItinerarieDto {
     private Long id;
     private int users_Id;
     private String name;
-    private String creation_date;
+    private String creationDate;
 
     // Empty constructor
     public ItinerarieDto() {
     }
 
     // Constructor with parameters
-    public ItinerarieDto(Long id, int users_Id, String name, String creation_date) {
+    public ItinerarieDto(Long id, int users_Id, String name, String creationDate) {
         this.id = id;
         this.users_Id = users_Id;
         this.name = name;
-        this.creation_date = creation_date;
+        this.creationDate = creationDate;
     }
 
-    // Getters y Setters
+        // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -43,8 +43,12 @@ public class ItinerarieDto {
         this.name = name;
     }
 
-    public String getCreation_date() {
-        return this.creation_date;
+    public String getCreationDate() {
+        return this.creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
     // toString() method
@@ -54,7 +58,7 @@ public class ItinerarieDto {
                 "id=" + id +
                 ", users_Id='" + users_Id + '\'' +
                 ", name='" + name + '\'' +
-                ", creation_date='" + creation_date + '\'' +
+                ", creation_date='" + creationDate + '\'' +
                 '}';
     }
 }

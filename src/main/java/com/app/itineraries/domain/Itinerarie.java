@@ -57,11 +57,11 @@ public class Itinerarie {
         this.name = name;
     }
 
-    public String getCreation_date() {
+    public String getCreationDate() {
         return this.creationDate;
     }
 
-    public void setCreation_date(String creation_date) {
+    public void setCreationDate(String creation_date) {
         this.creationDate = creation_date;
     }
 }

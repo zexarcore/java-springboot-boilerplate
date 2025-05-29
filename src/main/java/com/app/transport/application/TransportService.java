@@ -52,6 +52,8 @@ public class TransportService implements ITransportService {
         Transport existingTransport = findById(id);
         existingTransport.setDuration(updatedTransport.getDuration());
         existingTransport.setPrice(updatedTransport.getPrice());
+        existingTransport.setType(updatedTransport.getType());
+        existingTransport.setDestination_id(updatedTransport.getDestination_id());
         // Any other fields to update based on your entity
         return transportRepository.save(existingTransport);
     }

@@ -33,7 +33,7 @@ public class ItinerarieDatasource {
             existingUser.setId(itinerarie.getId());
             existingUser.setUsers_Id(itinerarie.getUsers_Id());
             existingUser.setName(itinerarie.getName());
-            existingUser.setCreation_date(itinerarie.getCreation_date());
+            existingUser.setCreationDate(itinerarie.getCreationDate());
             return itinerarieRepository.save(existingUser);
         });
     }

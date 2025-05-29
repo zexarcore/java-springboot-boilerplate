@@ -53,6 +53,7 @@ public class AccommodationService implements IAccommodationService {
         Accommodation existingAccommodation = findById(id);
         existingAccommodation.setName(updatedAccommodation.getName());
         existingAccommodation.setAddress(updatedAccommodation.getAddress());
+        existingAccommodation.setType(updatedAccommodation.getType());
         existingAccommodation.setPrice_per_night(updatedAccommodation.getPrice_per_night());
 
         return accommodationRepository.save(existingAccommodation);
