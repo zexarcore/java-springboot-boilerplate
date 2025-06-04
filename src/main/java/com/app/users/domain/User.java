@@ -20,15 +20,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = true)
+    private String phone;
+
     // Empty constructor (required for JPA)
-    public User() {}
+    public User() {
+    }
 
     // Constructor with parameters
-    public User(Long id, String name, String email, String password) {
+    public User(Long id, String name, String email, String password, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.phone = phone;
     }
 
     // Getters y Setters
@@ -62,5 +67,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
