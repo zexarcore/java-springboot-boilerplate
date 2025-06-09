@@ -9,7 +9,7 @@ import com.app.transport.domain.ITransportService;
 import com.app.transport.domain.Transport;  
 
 @RestController  
-@RequestMapping("/api/transports")  
+@RequestMapping("/api/transport")  
 public class TransportController {  
 
     private final ITransportService transportService;  
@@ -20,9 +20,9 @@ public class TransportController {
 
     // Obtener todos los transportes  
     @GetMapping  
-    public ResponseEntity<List<Transport>> getAllTransports() {  
-        List<Transport> transports = transportService.findAll();  
-        return ResponseEntity.ok(transports);  
+    public ResponseEntity<List<Transport>> getAllTransport() {  
+        List<Transport> transport = transportService.findAll();  
+        return ResponseEntity.ok(transport);  
     }  
 
     // Obtener transporte por ID  
