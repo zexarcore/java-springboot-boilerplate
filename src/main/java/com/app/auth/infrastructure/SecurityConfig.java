@@ -70,7 +70,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("") // Reemplaza con tu frontend real
+                        .allowedOrigins("http://localhost:5173") // Reemplaza con tu frontend real
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true)
