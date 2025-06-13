@@ -11,12 +11,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.auth.infrastructure.JwtUtils;
+import com.app.auth.infrastructure.dto.RegisterRequest;
+
+import com.app.shared.application.exception.HandlerException;
+
+import com.app.auth.domain.AuthResponse;
 import com.app.auth.domain.IJwtTokenRepository;
 import com.app.auth.domain.JwtToken;
-import com.app.auth.infrastructure.JwtUtils;
-import com.app.auth.infrastructure.dto.AuthResponse;
-import com.app.auth.infrastructure.dto.ProfileResponse;
-import com.app.auth.infrastructure.dto.RegisterRequest;
+import com.app.auth.domain.ProfileResponse;
+
 import com.app.users.domain.IUserRepository;
 import com.app.users.domain.User;
 
@@ -26,87 +30,84 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 @RequiredArgsConstructor
 public class AuthService {
-    private final AuthenticationManager authenticationManager;
+    private static final String AUTH_ERROR = "Error de autenticación: %s";
+    private static final String TOKEN_ERROR = "Error con el token: %s";
+
+    private final AuthenticationManager authManager;
     private final JwtUtils jwtUtils;
-    private final IUserRepository userRepository;
-    private final IJwtTokenRepository tokenRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final IUserRepository userRepo;
+    private final IJwtTokenRepository tokenRepo;
+    private final PasswordEncoder encoder;
 
     public AuthResponse login(String email, String password) {
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(email, password)
-            );
-            String accessToken = jwtUtils.generateToken(authentication);
-            String refreshToken = createRefreshToken(email);
-            return new AuthResponse(accessToken, refreshToken);
+            return generateAuthResponse(authenticate(email, password), email);
         } catch (BadCredentialsException e) {
-            throw new RuntimeException("Invalid email or password");
+            throw new HandlerException(String.format(AUTH_ERROR, "Credenciales inválidas"), "AUTH_ERROR");
         }
     }
 
     @Transactional
     public AuthResponse register(RegisterRequest request) {
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already exists");
+        if (userRepo.existsByEmail(request.getEmail())) {
+            throw new HandlerException(String.format(AUTH_ERROR, "Email ya registrado"), "VALIDATION_ERROR");
         }
 
-        User user = new User();
-        user.setEmail(request.getEmail());
-        user.setName(request.getName());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        userRepository.save(user);
+        userRepo.save(new User(
+            null,
+            request.getName(),
+            request.getEmail(),
+            encoder.encode(request.getPassword())
+        ));
 
-        // Authenticate the user and generate tokens
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                    request.getEmail(), 
-                    request.getPassword()
-                )
-            );
-            
-            String accessToken = jwtUtils.generateToken(authentication);
-            String refreshToken = createRefreshToken(request.getEmail());
-            
-            return new AuthResponse(accessToken, refreshToken);
+            return generateAuthResponse(authenticate(request.getEmail(), request.getPassword()), request.getEmail());
         } catch (BadCredentialsException e) {
-            throw new RuntimeException("Error during registration authentication");
+            throw new HandlerException(String.format(AUTH_ERROR, "Error en autenticación post-registro"), "AUTH_ERROR");
         }
     }
 
     @Transactional
     public AuthResponse refreshToken(String refreshToken) {
-        return tokenRepository.findByToken(refreshToken)
-                .map(token -> {
-                    if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
-                        tokenRepository.delete(token);
-                        throw new RuntimeException("Refresh token expired");
-                    }
-
-                    String newAccessToken = jwtUtils.generateToken(token.getUserEmail());
-                    return new AuthResponse(newAccessToken, refreshToken);
-                })
-                .orElseThrow(() -> new RuntimeException("Refresh token not found"));
+        return tokenRepo.findByToken(refreshToken)
+            .map(this::processRefreshToken)
+            .orElseThrow(() -> new HandlerException(String.format(TOKEN_ERROR, "Token no encontrado"), "TOKEN_ERROR"));
     }
 
     @Transactional
     public ProfileResponse getProfile(String email) {
-        return userRepository.findByEmail(email)
+        return userRepo.findByEmail(email)
             .map(user -> new ProfileResponse(user.getId(), user.getName(), user.getEmail()))
-            .orElseThrow(() -> new RuntimeException("User not found"));
+            .orElseThrow(() -> new HandlerException(String.format(AUTH_ERROR, "Usuario no encontrado"), "USER_ERROR"));
+    }
+
+    private Authentication authenticate(String email, String password) {
+        return authManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+    }
+
+    private AuthResponse generateAuthResponse(Authentication auth, String email) {
+        return new AuthResponse(
+            jwtUtils.generateToken(auth),
+            createRefreshToken(email)
+        );
+    }
+
+    private AuthResponse processRefreshToken(JwtToken token) {
+        if (token.isExpired()) {
+            tokenRepo.delete(token);
+            throw new HandlerException(String.format(TOKEN_ERROR, "Token expirado"), "TOKEN_ERROR");
+        }
+        return new AuthResponse(jwtUtils.generateToken(token.getUserEmail()), token.getToken());
     }
 
     @Transactional
-    private String createRefreshToken(String userEmail) {
-        tokenRepository.deleteByUserEmail(userEmail);
-        
-        JwtToken refreshToken = new JwtToken();
-        refreshToken.setUserEmail(userEmail);
-        refreshToken.setToken(UUID.randomUUID().toString());
-        refreshToken.setExpiryDate(Instant.now().plusMillis(jwtUtils.getRefreshTokenDurationMs()));
-        
-        tokenRepository.save(refreshToken);
-        return refreshToken.getToken();
+    private String createRefreshToken(String email) {
+        tokenRepo.deleteByUserEmail(email);
+        return tokenRepo.save(JwtToken.builder()
+            .userEmail(email)
+            .token(UUID.randomUUID().toString())
+            .expiryDate(Instant.now().plusMillis(jwtUtils.getRefreshTokenDurationMs()))
+            .build())
+            .getToken();
     }
 } 

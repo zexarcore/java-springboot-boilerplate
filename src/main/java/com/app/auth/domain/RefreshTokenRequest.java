@@ -1,4 +1,4 @@
-package com.app.auth.infrastructure.dto;
+package com.app.auth.domain;
 
 public class RefreshTokenRequest {
     private String refreshToken;

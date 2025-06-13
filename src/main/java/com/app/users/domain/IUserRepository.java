@@ -34,7 +34,7 @@ public interface IUserRepository extends JpaRepository<User, Long> {
     void deleteById(@NonNull Long id);
 
     // Additional application-specific methods:
-
+    
     // Search for a user by their email
     Optional<User> findByEmail(String email);
 

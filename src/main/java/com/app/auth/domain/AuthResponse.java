@@ -1,4 +1,4 @@
-package com.app.auth.infrastructure.dto;
+package com.app.auth.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

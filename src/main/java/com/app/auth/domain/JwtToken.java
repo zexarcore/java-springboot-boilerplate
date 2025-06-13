@@ -3,8 +3,17 @@ package com.app.auth.domain;
 import jakarta.persistence.*;
 import java.time.Instant;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "refresh_tokens")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class JwtToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,35 +28,15 @@ public class JwtToken {
     @Column(nullable = false)
     private Instant expiryDate;
 
-    public Long getId() {
-        return id;
+    public boolean isExpired() {
+        return Instant.now().isAfter(expiryDate);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public Instant getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(Instant expiryDate) {
-        this.expiryDate = expiryDate;
+    public static JwtToken create(String token, String userEmail, Instant expiryDate) {
+        return JwtToken.builder()
+                .token(token)
+                .userEmail(userEmail)
+                .expiryDate(expiryDate)
+                .build();
     }
 } 
