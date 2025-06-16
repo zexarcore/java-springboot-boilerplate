@@ -52,8 +52,6 @@ public class ActivitieService implements IActivitieService {
     public Activitie update(Activitie updatedActivitie, Long id) {
         Activitie existingActivitie = findById(id);
         existingActivitie.setName(updatedActivitie.getName());
-        existingActivitie.setDescription(updatedActivitie.getDescription());
-        existingActivitie.setSchedule(updatedActivitie.getSchedule());
         existingActivitie.setPrice(updatedActivitie.getPrice());
         // otros campos a actualizar según tu entidad
         return activitieRepository.save(existingActivitie);

@@ -20,6 +20,7 @@ public class DestinationDatasource {
     public List<Destination> findAll() {
         return destinationRepository.findAll();
     }
+
     public Optional<Destination> findById(Long id) {
         return destinationRepository.findById(id);
     }
@@ -31,9 +32,13 @@ public class DestinationDatasource {
     public Optional<Destination> update(Destination destination, Long id) {
         return destinationRepository.findById(id).map(existingUser -> {
             existingUser.setId(destination.getId());
-            existingUser.setName(destination.getName());
-            existingUser.setDescription(destination.getDescription());
-            existingUser.setLocation(destination.getLocation());
+            existingUser.setNameDestination(destination.getNameDestination());
+            existingUser.setBaseNights(destination.getBaseNights());
+            existingUser.setNameHotel(destination.getNameHotel());
+            existingUser.setPricePerNight(destination.getPricePerNight());
+            existingUser.setTypeTransport(destination.getTypeTransport());
+            existingUser.setPriceTrasport(destination.getPriceTrasport());
+            existingUser.setMealsPrice(destination.getMealsPrice());
             return destinationRepository.save(existingUser);
         });
     }

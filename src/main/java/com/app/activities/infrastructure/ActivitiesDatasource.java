@@ -32,8 +32,6 @@ public class ActivitiesDatasource {
         return activitiesRepository.findById(id).map(existingactivities -> {
             existingactivities.setDestination_id(activities.getDestination_id());
             existingactivities.setName(activities.getName());
-            existingactivities.setDescription(activities.getDescription());
-            existingactivities.setSchedule(activities.getSchedule());
             existingactivities.setPrice(activities.getPrice());
             return activitiesRepository.save(existingactivities);
         });

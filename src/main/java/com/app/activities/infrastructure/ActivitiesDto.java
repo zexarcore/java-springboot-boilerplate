@@ -4,21 +4,17 @@ public class ActivitiesDto {
     private Long id;
     private int destination_id;
     private String name;
-    private String description;
-    private String schedule;
     private double price;
 
-    // Empty constructor
+    // Constructor vacío
     public ActivitiesDto() {
     }
 
-    // Constructor with parameters
-    public ActivitiesDto(Long id, int destination_id, String name, String description, String schedule, double price) {
+    // Constructor con parámetros
+    public ActivitiesDto(Long id, int destination_id, String name, double price) {
         this.id = id;
         this.destination_id = destination_id;
         this.name = name;
-        this.description = description;
-        this.schedule = schedule;
         this.price = price;
     }
 
@@ -47,14 +43,6 @@ public class ActivitiesDto {
         this.name = name;
     }
 
-    public String getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -63,16 +51,14 @@ public class ActivitiesDto {
         this.price = price;
     }
 
-    // toString() method
+    // Método toString()
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "ActivitiesDto{" +
                 "id=" + id +
-                ", destination_id='" + destination_id + '\'' +
+                ", destination_id=" + destination_id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", schedule='" + schedule + '\'' +
-                ", price='" + price + '\'' +
+                ", price=" + price +
                 '}';
     }
 }

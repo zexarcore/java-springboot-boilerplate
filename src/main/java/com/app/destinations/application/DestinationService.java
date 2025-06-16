@@ -32,28 +32,36 @@ public class DestinationService implements IDestinationService {
     }
 
     @Override
-@Transactional
-public Destination save(Destination destination) {
-    boolean yaExiste = destinationRepository.existsByNameAndLocation(
-        destination.getName(),
-        destination.getLocation()
-    );
+    @Transactional
+    public Destination save(Destination destination) {
+        boolean yaExiste = destinationRepository
+                .existsByNameDestinationAndBaseNightsAndAndNameHotelAndPricePerNightAndTypeTransportAndPriceTrasportAndMealsPrice(
+                        destination.getNameDestination(),
+                        destination.getBaseNights(),
+                        destination.getNameHotel(),
+                        destination.getPricePerNight(),
+                        destination.getTypeTransport(),
+                        destination.getPriceTrasport(),
+                        destination.getMealsPrice());
 
-    if (yaExiste) {
-        throw new IllegalArgumentException("Ya existe un destino con ese nombre y país.");
+        if (yaExiste) {
+            throw new IllegalArgumentException("Ya existe un destino con ese nombre y país.");
+        }
+
+        return destinationRepository.save(destination);
     }
-
-    return destinationRepository.save(destination);
-}
-
 
     @Override
     @Transactional
     public Destination update(Destination updatedDestination, Long id) {
         Destination existingDestination = findById(id);
-        existingDestination.setName(updatedDestination.getName());
-        existingDestination.setLocation(updatedDestination.getLocation());
-        existingDestination.setDescription(updatedDestination.getDescription());
+        existingDestination.setNameDestination(updatedDestination.getNameDestination());
+        existingDestination.setBaseNights(updatedDestination.getBaseNights());
+        existingDestination.setNameHotel(updatedDestination.getNameHotel());
+        existingDestination.setPricePerNight(updatedDestination.getPricePerNight());
+        existingDestination.setTypeTransport(updatedDestination.getTypeTransport());
+        existingDestination.setPriceTrasport(updatedDestination.getPriceTrasport());
+        existingDestination.setMealsPrice(updatedDestination.getMealsPrice());
         // otros campos si tienes
         return destinationRepository.save(existingDestination);
     }
@@ -65,4 +73,3 @@ public Destination save(Destination destination) {
         destinationRepository.delete(destination);
     }
 }
-

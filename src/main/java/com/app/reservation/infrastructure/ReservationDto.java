@@ -2,25 +2,23 @@ package com.app.reservation.infrastructure;
 
 public class ReservationDto {
     private Long id;
-    private int users_Id;
-    private String itinerary_id;
-    private String activity_id;
-    private double accommodations_id;
+    private long users_Id;
+    private long destination_Id;
+    private long activity_id;
     private String reservations_date;
     private String quantity;
 
-    // Empty constructor
+    // Constructor vacío
     public ReservationDto() {
     }
 
-    // Constructor with parameters
-    public ReservationDto(Long id, int users_Id, String itinerary_id, String activity_id, double accommodations_id, String reservation_id, String quantity) {
+    // Constructor con parámetros
+    public ReservationDto(Long id, long users_Id, long destination_Id, long activity_id, String reservations_date, String quantity) {
         this.id = id;
         this.users_Id = users_Id;
-        this.itinerary_id = itinerary_id;
+        this.destination_Id = destination_Id;
         this.activity_id = activity_id;
-        this.accommodations_id = accommodations_id;
-        this.reservations_date = reservation_id;
+        this.reservations_date = reservations_date;
         this.quantity = quantity;
     }
 
@@ -33,36 +31,28 @@ public class ReservationDto {
         this.id = id;
     }
 
-    public int getUsers_Id() {
+    public long getUsers_Id() {
         return users_Id;
     }
 
-    public void setUsers_Id(int users_Id) {
+    public void setUsers_Id(long users_Id) {
         this.users_Id = users_Id;
     }
 
-    public String getItinerary_id() {
-        return itinerary_id;
+    public long getDestination_Id() {
+        return destination_Id;
     }
 
-    public void setItinerary_id(String itinerary_id) {
-        this.itinerary_id = itinerary_id;
+    public void setDestination_Id(long destination_Id) {
+        this.destination_Id = destination_Id;
     }
 
-    public String getActivity_id() {
+    public long getActivity_id() {
         return activity_id;
     }
 
-    public void setActivity_id(String activity_id) {
+    public void setActivity_id(long activity_id) {
         this.activity_id = activity_id;
-    }
-
-    public double getAccommodations_id() {
-        return accommodations_id;
-    }
-
-    public void setAccommodations_id(double accommodations_id) {
-        this.accommodations_id = accommodations_id;
     }
 
     public String getReservations_date() {
@@ -76,19 +66,19 @@ public class ReservationDto {
     public String getQuantity() {
         return quantity;
     }
+
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-    // toString() method
+    // Método toString()
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "ReservationDto{" +
                 "id=" + id +
-                ", users_Id='" + users_Id + '\'' +
-                ", itinerary_id='" + itinerary_id + '\'' +
-                ", activity_id='" + activity_id + '\'' +
-                ", accommodations_id='" + accommodations_id + '\'' +
+                ", users_Id=" + users_Id +
+                ", destination_Id=" + destination_Id +
+                ", activity_id=" + activity_id +
                 ", reservations_date='" + reservations_date + '\'' +
                 ", quantity='" + quantity + '\'' +
                 '}';

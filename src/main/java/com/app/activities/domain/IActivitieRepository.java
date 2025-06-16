@@ -12,26 +12,26 @@ public interface IActivitieRepository extends JpaRepository<Activitie, Long> {
 
     boolean existsByNameAndPrice(String name, Double price);
 
-    // Get all users (already provided by JpaRepository)
+    // Obtener todas las actividades (ya proporcionado por JpaRepository)
     @Override
     @NonNull
     List<Activitie> findAll();
 
-    // Search user by ID (already provided by JpaRepository)
+    // Buscar actividad por ID (ya proporcionado por JpaRepository)
     @Override
     @NonNull
     Optional<Activitie> findById(@NonNull Long id);
 
-    // Save a user (already provided by JpaRepository)
+    // Guardar una actividad (ya proporcionado por JpaRepository)
     @Override
     @NonNull
     <S extends Activitie> S save(@NonNull S activitie);
 
-    // Check if a user with a specific ID exists (already provided by JpaRepository)
+    // Verificar si existe una actividad con un ID específico (ya proporcionado por JpaRepository)
     @Override
     boolean existsById(@NonNull Long id);
 
-    // Delete user by ID (already provided by JpaRepository)
+    // Eliminar actividad por ID (ya proporcionado por JpaRepository)
     @Override
     void deleteById(@NonNull Long id);
 }

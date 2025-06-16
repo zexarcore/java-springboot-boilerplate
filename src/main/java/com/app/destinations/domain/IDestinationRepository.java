@@ -10,7 +10,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IDestinationRepository extends JpaRepository<Destination, Long> {
 
-    boolean existsByNameAndLocation(String name, String location);
+    boolean existsByNameDestinationAndBaseNightsAndAndNameHotelAndPricePerNightAndTypeTransportAndPriceTrasportAndMealsPrice(
+            String nameDestination,
+            int baseNights,
+            String nameHotel,
+            double pricePerNight,
+            String typeTransport,
+            double priceTrasport,
+            double mealsPrice);
 
     // Get all users (already provided by JpaRepository)
     @Override

@@ -2,20 +2,29 @@ package com.app.destinations.infrastructure;
 
 public class DestinationDto {
     private Long id;
-    private String name;
-    private String description;
-    private String location;
+    private String nameDestination;
+    private int baseNights;
+    private String nameHotel;
+    private double pricePerNight;
+    private String typeTransport;
+    private double priceTrasport;
+    private double mealsPrice;
 
-    // Empty constructor
+    // Constructor vacío
     public DestinationDto() {
     }
 
-    // Constructor with parameters
-    public DestinationDto(Long id, String name, String description, String location) {
+    // Constructor con parámetros
+    public DestinationDto(Long id, String nameDestination, int baseNights, String nameHotel,
+            double pricePerNight, String typeTransport, double priceTrasport, double mealsPrice) {
         this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
+        this.nameDestination = nameDestination;
+        this.baseNights = baseNights;
+        this.nameHotel = nameHotel;
+        this.pricePerNight = pricePerNight;
+        this.typeTransport = typeTransport;
+        this.priceTrasport = priceTrasport;
+        this.mealsPrice = mealsPrice;
     }
 
     // Getters y Setters
@@ -27,34 +36,73 @@ public class DestinationDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameDestination() {
+        return nameDestination;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameDestination(String nameDestination) {
+        this.nameDestination = nameDestination;
     }
 
-    public String getDescription() {
-        return description;
+    public int getBaseNights() {
+        return baseNights;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBaseNights(int baseNights) {
+        this.baseNights = baseNights;
     }
 
-    public String getLocation() {
-        return this.location;
+    public String getNameHotel() {
+        return nameHotel;
     }
 
-    // toString() method
+    public void setNameHotel(String nameHotel) {
+        this.nameHotel = nameHotel;
+    }
+
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
+
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
+    public String getTypeTransport() {
+        return typeTransport;
+    }
+
+    public void setTypeTransport(String typeTransport) {
+        this.typeTransport = typeTransport;
+    }
+
+    public double getPriceTrasport() {
+        return priceTrasport;
+    }
+
+    public void setPriceTrasport(double priceTrasport) {
+        this.priceTrasport = priceTrasport;
+    }
+
+    public double getMealsPrice() {
+        return mealsPrice;
+    }
+
+    public void setMealsPrice(double mealsPrice) {
+        this.mealsPrice = mealsPrice;
+    }
+
     @Override
     public String toString() {
-        return "UserDto{" +
+        return "DestinationDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
+                ", nameDestination='" + nameDestination + '\'' +
+                ", baseNights=" + baseNights +
+                ", nameHotel='" + nameHotel + '\'' +
+                ", pricePerNight=" + pricePerNight +
+                ", typeTransport='" + typeTransport + '\'' +
+                ", priceTrasport=" + priceTrasport +
+                ", mealsPrice=" + mealsPrice +
                 '}';
     }
 }

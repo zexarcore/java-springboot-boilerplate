@@ -18,24 +18,17 @@ public class Activitie {
     private String name;
 
     @Column(nullable = true)
-    private String description;
-
-    @Column(nullable = true)
-    private String schedule;
-
-    @Column(nullable = true)
     private double price;
 
-    // Empty constructor (required for JPA)
+    // Constructor vacío (requerido por JPA)
     public Activitie() {
     }
 
-    // Constructor with parameters
-    public Activitie(Long id, int destination_id, String name, String schedule, double price) {
+    // Constructor con parámetros
+    public Activitie(Long id, int destination_id, String name, double price) {
         this.id = id;
         this.destination_id = destination_id;
         this.name = name;
-        this.schedule = schedule;
         this.price = price;
     }
 
@@ -62,14 +55,6 @@ public class Activitie {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
     }
 
     public double getPrice() {

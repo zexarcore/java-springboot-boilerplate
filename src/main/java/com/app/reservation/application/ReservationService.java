@@ -40,11 +40,10 @@ public class ReservationService implements IReservationService {
     @Transactional
     public Reservation update(Reservation reservation, Long id) {
         Reservation existing = findById(id);
-        existing.setReservations_date(reservation.getReservations_date());  
-        existing.setUsers_Id(reservation.getUsers_Id());  
-        existing.setItinerary_id(reservation.getItinerary_id());
+        existing.setUsers_Id(reservation.getUsers_Id());
+        existing.setDestination_Id(reservation.getDestination_Id());
         existing.setActivity_id(reservation.getActivity_id());
-        existing.setAccommodations_id(reservation.getAccommodations_id());
+        existing.setReservations_date(reservation.getReservations_date());  
         existing.setQuantity(reservation.getQuantity());
         return reservationRepository.save(existing);
     }

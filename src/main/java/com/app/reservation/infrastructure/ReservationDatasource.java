@@ -32,9 +32,8 @@ public class ReservationDatasource {
         return reservationRepository.findById(id).map(existingUser -> {
             existingUser.setId(reservation.getId());
             existingUser.setUsers_Id(reservation.getUsers_Id());
-            existingUser.setItinerary_id(reservation.getItinerary_id());
+            existingUser.setDestination_Id(reservation.getDestination_Id());
             existingUser.setActivity_id(reservation.getActivity_id());
-            existingUser.setAccommodations_id(reservation.getAccommodations_id());
             existingUser.setReservations_date(reservation.getReservations_date());
             existingUser.setQuantity(reservation.getQuantity());
             return reservationRepository.save(existingUser);
